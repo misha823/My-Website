@@ -3,193 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Engineering Portfolio | 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --blue: #2563eb; --dark: #0f172a; --gray: #64748b; --bg: #f8fafc; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg); color: var(--dark); line-height: 1.6; }
+        :root {
+            /* Warm Engineering Palette */
+            --bg-color: #fdfaf5; 
+            --grid-color: rgba(181, 150, 112, 0.1); 
+            --blue: #2563eb;
+            --dark: #1e293b;
+            --gray: #64748b;
+        }
+
+        /* 1. BACKGROUND & GRID */
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; margin: 0; padding: 0; 
+            color: var(--dark); background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* 2. HEADER & FLASHING SLIDESHOW */
+        header { text-align: center; padding: 4rem 1rem; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); border-bottom: 1px solid #e2e8f0; }
         
-        /* Header & Profile */
-        header { text-align: center; padding: 4rem 1rem; background: white; border-bottom: 1px solid #e2e8f0; }
-        .profile-img { width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--blue); object-fit: cover; }
+        .hat-slideshow {
+            position: relative; width: 160px; height: 160px; margin: 0 auto 1.5rem auto;
+        }
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%; border: 4px solid var(--blue); object-fit: cover;
+            opacity: 0; animation: flashImages 20s infinite;
+        }
+        .slide:nth-child(1) { animation-delay: 0s; }
+        .slide:nth-child(2) { animation-delay: 5s; }
+        .slide:nth-child(3) { animation-delay: 10s; }
+        .slide:nth-child(4) { animation-delay: 15s; }
+
+        @keyframes flashImages {
+            0% { opacity: 0; }
+            5% { opacity: 1; }
+            25% { opacity: 1; }
+            30% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* 3. LAYOUT CONTAINERS */
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        section { margin-bottom: 4rem; }
+        h2 { font-size: 1.8rem; border-left: 5px solid var(--blue); padding-left: 15px; margin-bottom: 1.5rem; }
+
+        /* 4. RESUME VIEWER (MODAL) */
+        .resume-link { font-size: 1.2rem; color: var(--blue); font-weight: bold; text-decoration: underline; cursor: pointer; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); overflow-y: auto; }
+        .modal-content { background: white; margin: 2rem auto; width: 90%; max-width: 850px; padding: 2rem; border-radius: 12px; }
+        .modal-header { position: sticky; top: 0; background: white; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; z-index: 10; }
         
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-        h2 { font-size: 1.8rem; border-bottom: 2px solid var(--blue); display: inline-block; margin-bottom: 1.5rem; }
+        .resume-nav a { margin-right: 15px; text-decoration: none; color: var(--blue); font-weight: 600; background: rgba(37,99,235,0.1); padding: 5px 12px; border-radius: 4px; }
+        .resume-img { width: 100%; height: auto; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .page-label { text-align: center; color: var(--gray); font-size: 0.8rem; margin-top: 40px; text-transform: uppercase; }
 
-        /* Resume PDF Embed */
-        .resume-container { background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 3rem; }
-        .pdf-viewer { width: 100%; height: 600px; border: none; border-radius: 8px; }
+        /* 5. GALLERY */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .project-card img, .project-card video { width: 100%; height: 220px; object-fit: cover; display: block; }
+        .p-info { padding: 1.5rem; }
 
-        /* Media Gallery */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .item { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .item img, .item video { width: 100%; display: block; height: 220px; object-fit: cover; }
-        .item-text { padding: 1.5rem; }
-
-        .btn { display: inline-block; background: var(--blue); color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 10px; }
-        footer { text-align: center; padding: 3rem; color: var(--gray); }
-
-        /* Container for the flashing photos */
-.hat-slideshow {
-    position: relative;
-    width: 180px; /* Slightly larger for effect */
-    height: 180px;
-    margin: 0 auto 1.5rem auto;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 4px solid var(--blue);
-    object-fit: cover;
-    opacity: 0;
-    animation: flashImages 20s infinite; /* 4 images * 5 seconds = 20s total loop */
-}
-
-/* Staggering the start time for each image */
-.slide:nth-child(1) { animation-delay: 0s; }
-.slide:nth-child(2) { animation-delay: 5s; }
-.slide:nth-child(3) { animation-delay: 10s; }
-.slide:nth-child(4) { animation-delay: 15s; }
-
-@keyframes flashImages {
-    0% { opacity: 0; }
-    5% { opacity: 1; }  /* Fade in quick */
-    25% { opacity: 1; } /* Stay visible for 5s (1/4 of the 20s loop) */
-    30% { opacity: 0; } /* Fade out */
-    100% { opacity: 0; }
-}
-
-:root {
-    /* Warm, professional engineering palette */
-    --bg-color: #fdfaf5; 
-    --grid-color: rgba(181, 150, 112, 0.1); /* Subtle warm lines */
-    --blue: #2c5282;
-    --dark: #2d3748;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    color: var(--dark);
-    background-color: var(--bg-color);
-    /* This creates the "Graph Paper" pattern */
-    background-image: 
-        linear-gradient(var(--grid-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-    background-size: 30px 30px; /* Size of the grid squares */
-    line-height: 1.6;
-}
-
-/* Let's make the cards slightly transparent (Glassmorphism) 
-   so the pattern peeks through just a tiny bit */
-header, .resume-container, .item {
-    background: rgba(255, 255, 255, 0.9) !important;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-/* Styling for the Link */
-.resume-link {
-    font-size: 1.2rem;
-    color: var(--blue);
-    font-weight: bold;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-/* The Overlay (Background) */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.85); /* Dark background to focus on resume */
-    overflow-y: auto; /* Allow scrolling if resume is long */
-    padding-top: 50px;
-}
-
-/* The Resume Image Holder */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 800px;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.close {
-    color: #fff;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-        
-        
+        .btn { display: inline-block; background: var(--blue); color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .close { font-size: 2rem; cursor: pointer; color: var(--dark); line-height: 1; }
     </style>
 </head>
-<script>
-function openResume() {
-    document.getElementById("resume-modal").style.display = "block";
-}
-
-function closeResume() {
-    document.getElementById("resume-modal").style.display = "none";
-}
-
-// Close if user clicks outside the resume image
-window.onclick = function(event) {
-    let modal = document.getElementById("resume-modal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-    
 <body>
 
 <header>
     <div class="hat-slideshow">
-    <img src="hat1.jpg" alt="Me in hat 1" class="slide">
-    <img src="hat2.jpg" alt="Me in hat 2" class="slide">
-    <img src="hat3.jpg" alt="Me in hat 3" class="slide">
-    <img src="hat4.jpg" alt="Me in hat 4" class="slide">
-</div>
-    <h1>Hello, Welcome to my website! I am Michael Dumesh</h1>
-    <p>Creator | Problem Solver | Specialist</p>
+        <img src="hat1.jpg" class="slide" alt="Photo 1">
+        <img src="hat2.jpg" class="slide" alt="Photo 2">
+        <img src="hat3.jpg" class="slide" alt="Photo 3">
+        <img src="hat4.jpg" class="slide" alt="Photo 4">
+    </div>
+    <h1>[Your Name]</h1>
+    <p>Mechanical Engineer | Technical Solutions | Creative Designer</p>
 </header>
 
 <div class="container">
     
-    <section>
-        <h2>About Me</h2>
-        <p>This is where you tell your story. Talk about your background, what you're passionate about, and what you're looking for. Keep it professional but let your personality shine through.</p>
+    <section id="about">
+        <h2>Professional Profile</h2>
+        <p>I am a detail-oriented engineer focused on building efficient, scalable solutions. This portfolio showcases my technical background, core projects, and professional experience.</p>
     </section>
 
-    <section style="text-align: center; margin: 3rem 0;">
-    <h2>Resume</h2>
-    <p>Click the link below to view my professional background.</p>
-    
-    <a href="#resume-viewer" class="resume-link" onclick="openResume()">Open Resume in Read Mode</a>
+    <section id="resume-section" style="text-align: center;">
+        <h2>Experience</h2>
+        <p>Review my history in "Read Mode" or download the file.</p>
+        <a href="javascript:void(0)" class="resume-link" onclick="openResume()">Open 2-Page Resume (Read Mode)</a>
+    </section>
 
-    <div id="resume-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeResume()">&times; Close</span>
-            <img src="resume-image.png" alt="My Resume" style="width: 100%; height: auto;">
+    <section id="portfolio">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+            <div class="project-card">
+                <img src="project-photo.jpg" alt="Design Project">
+                <div class="p-info">
+                    <h3>Design Optimization</h3>
+                    <p>Analysis of structural integrity using modern simulation tools.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <video controls>
+                    <source src="project-video.mp4" type="video/mp4">
+                </video>
+                <div class="p-info">
+                    <h3>Prototyping Demo</h3>
+                    <p>A video walkthrough of my latest hardware prototype in action.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="resume-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <nav class="resume-nav">
+                <a href="#pg1">Page 1</a>
+                <a href="#pg2">Page 2</a>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <a href="resume.pdf" download class="btn" style="font-size: 0.8rem;">Download PDF</a>
+                <span class="close" onclick="closeResume()">&times;</span>
+            </div>
+        </div>
+        <div id="pg1">
+            <div class="page-label">Page 1</div>
+            <img src="resume-page1.png" class="resume-img" alt="Resume Page 1">
+        </div>
+        <div id="pg2">
+            <div class="page-label">Page 2</div>
+            <img src="resume-page2.png" class="resume-img" alt="Resume Page 2">
         </div>
     </div>
-</section>
+</div>
 
+<footer>
+    <p style="text-align: center; color: var(--gray); padding: 4rem 0;">&copy; 2026 [Your Name] • Built with GitHub Pages</p>
+</footer>
 
+<script>
+    function openResume() { document.getElementById("resume-modal").style.display = "block"; }
+    function closeResume() { document.getElementById("resume-modal").style.display = "none"; }
+    window.onclick = function(e) { if (e.target == document.getElementById("resume-modal")) closeResume(); }
+</script>
 
+</body>
+</html>
