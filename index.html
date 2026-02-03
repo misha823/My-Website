@@ -7,27 +7,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Warm Engineering Palette */
-            --bg-color: #fdfaf5; 
-            --grid-color: rgba(181, 150, 112, 0.1); 
-            --blue: #2563eb;
+            /* "Happier" Engineering Palette - Warm Gold & Soft Blue */
+            --bg-color: #fffaf0; /* Warm Floral White/Light Gold */
+            --grid-color: rgba(245, 158, 11, 0.15); /* Soft Amber grid lines */
+            --blue: #3b82f6; /* Brighter, happier blue */
             --dark: #1e293b;
             --gray: #64748b;
         }
 
-        /* 1. BACKGROUND & GRID */
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Inter', sans-serif; margin: 0; padding: 0; 
-            color: var(--dark); background-color: var(--bg-color);
+        /* 1. FULL PAGE BACKGROUND FIX */
+        html { 
+            scroll-behavior: smooth;
+            min-height: 100%;
+            /* Pattern covers the entire document */
+            background-color: var(--bg-color);
             background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 30px 30px;
+                radial-gradient(var(--grid-color) 1px, transparent 1px);
+            background-size: 25px 25px; /* Dot-grid for a modern, happy feel */
+            background-attachment: fixed;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--dark);
+            background: transparent; /* Allows HTML background to show through */
         }
 
         /* 2. HEADER & FLASHING SLIDESHOW */
-        header { text-align: center; padding: 4rem 1rem; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); border-bottom: 1px solid #e2e8f0; }
+        header { 
+            text-align: center; 
+            padding: 4rem 1rem; 
+            background: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(8px); 
+            border-bottom: 2px solid rgba(245, 158, 11, 0.2); 
+        }
         
         .hat-slideshow {
             position: relative; width: 160px; height: 160px; margin: 0 auto 1.5rem auto;
@@ -36,6 +51,7 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             border-radius: 50%; border: 4px solid var(--blue); object-fit: cover;
             opacity: 0; animation: flashImages 20s infinite;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .slide:nth-child(1) { animation-delay: 0s; }
         .slide:nth-child(2) { animation-delay: 5s; }
@@ -52,72 +68,81 @@
 
         /* 3. LAYOUT CONTAINERS */
         .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        section { margin-bottom: 4rem; }
-        h2 { font-size: 1.8rem; border-left: 5px solid var(--blue); padding-left: 15px; margin-bottom: 1.5rem; }
+        section { 
+            margin-bottom: 4rem; 
+            background: rgba(255, 255, 255, 0.7); 
+            padding: 2rem; 
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        h2 { font-size: 1.8rem; border-left: 5px solid var(--blue); padding-left: 15px; margin-bottom: 1.5rem; color: var(--blue); }
 
         /* 4. RESUME VIEWER (MODAL) */
         .resume-link { font-size: 1.2rem; color: var(--blue); font-weight: bold; text-decoration: underline; cursor: pointer; }
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); overflow-y: auto; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(30, 41, 59, 0.95); overflow-y: auto; }
         .modal-content { background: white; margin: 2rem auto; width: 90%; max-width: 850px; padding: 2rem; border-radius: 12px; }
         .modal-header { position: sticky; top: 0; background: white; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; z-index: 10; }
         
-        .resume-nav a { margin-right: 15px; text-decoration: none; color: var(--blue); font-weight: 600; background: rgba(37,99,235,0.1); padding: 5px 12px; border-radius: 4px; }
+        .resume-nav a { margin-right: 15px; text-decoration: none; color: var(--blue); font-weight: 600; background: rgba(59, 130, 246, 0.1); padding: 5px 12px; border-radius: 4px; }
         .resume-img { width: 100%; height: auto; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #eee; }
         .page-label { text-align: center; color: var(--gray); font-size: 0.8rem; margin-top: 40px; text-transform: uppercase; }
 
         /* 5. GALLERY */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid rgba(59, 130, 246, 0.1); }
         .project-card img, .project-card video { width: 100%; height: 220px; object-fit: cover; display: block; }
         .p-info { padding: 1.5rem; }
 
-        .btn { display: inline-block; background: var(--blue); color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; }
-        .close { font-size: 2rem; cursor: pointer; color: var(--dark); line-height: 1; }
+        .btn { display: inline-block; background: var(--blue); color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; transition: transform 0.2s; }
+        .btn:hover { transform: scale(1.05); }
+        .close { font-size: 2.5rem; cursor: pointer; color: var(--dark); line-height: 1; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="hat-slideshow">
-        <img src="hat1.jpg" class="slide" alt="Photo 1">
-        <img src="hat2.jpg" class="slide" alt="Photo 2">
-        <img src="hat3.jpg" class="slide" alt="Photo 3">
-        <img src="hat4.jpg" class="slide" alt="Photo 4">
+        <img src="hat1.jpg" class="slide" alt="Hat 1">
+        <img src="hat2.jpg" class="slide" alt="Hat 2">
+        <img src="hat3.jpg" class="slide" alt="Hat 3">
+        <img src="hat4.jpg" class="slide" alt="Hat 4">
     </div>
-    <h1>[Your Name]</h1>
-    <p>Mechanical Engineer | Technical Solutions | Creative Designer</p>
+    <h1 style="margin: 0; color: var(--dark);">[Your Name]</h1>
+    <p style="color: var(--gray); font-weight: 300; font-size: 1.1rem;">Engineering Portfolio & Professional Journey</p>
 </header>
 
 <div class="container">
     
     <section id="about">
-        <h2>Professional Profile</h2>
-        <p>I am a detail-oriented engineer focused on building efficient, scalable solutions. This portfolio showcases my technical background, core projects, and professional experience.</p>
+        <h2>About Me</h2>
+        <p>Welcome! I'm an engineer passionate about solving complex problems with elegant solutions. This space is a collection of my technical work, my professional resume, and the projects I've brought to life.</p>
     </section>
 
     <section id="resume-section" style="text-align: center;">
         <h2>Experience</h2>
-        <p>Review my history in "Read Mode" or download the file.</p>
-        <a href="javascript:void(0)" class="resume-link" onclick="openResume()">Open 2-Page Resume (Read Mode)</a>
+        <p>View my history in a clean, distraction-free reader.</p>
+        <a href="javascript:void(0)" class="resume-link" onclick="openResume()">View 2-Page Resume (Read Mode)</a>
     </section>
 
     <section id="portfolio">
-        <h2>Featured Projects</h2>
+        <h2>Project Gallery</h2>
         <div class="grid">
             <div class="project-card">
                 <img src="project-photo.jpg" alt="Design Project">
                 <div class="p-info">
-                    <h3>Design Optimization</h3>
-                    <p>Analysis of structural integrity using modern simulation tools.</p>
+                    <h3>Technical Design</h3>
+                    <p>Optimized mechanical workflows using industry-standard modeling.</p>
                 </div>
             </div>
+            
             <div class="project-card">
-                <video controls>
+                <video controls playsinline>
                     <source src="project-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
                 <div class="p-info">
-                    <h3>Prototyping Demo</h3>
-                    <p>A video walkthrough of my latest hardware prototype in action.</p>
+                    <h3>Prototype Video</h3>
+                    <p>A short demonstration of project mechanics and implementation.</p>
                 </div>
             </div>
         </div>
@@ -140,7 +165,7 @@
             <div class="page-label">Page 1</div>
             <img src="resume-page1.png" class="resume-img" alt="Resume Page 1">
         </div>
-        <div id="pg2">
+        <div id="pg2" style="margin-top: 40px;">
             <div class="page-label">Page 2</div>
             <img src="resume-page2.png" class="resume-img" alt="Resume Page 2">
         </div>
@@ -152,8 +177,8 @@
 </footer>
 
 <script>
-    function openResume() { document.getElementById("resume-modal").style.display = "block"; }
-    function closeResume() { document.getElementById("resume-modal").style.display = "none"; }
+    function openResume() { document.getElementById("resume-modal").style.display = "block"; document.body.style.overflow = "hidden"; }
+    function closeResume() { document.getElementById("resume-modal").style.display = "none"; document.body.style.overflow = "auto"; }
     window.onclick = function(e) { if (e.target == document.getElementById("resume-modal")) closeResume(); }
 </script>
 
