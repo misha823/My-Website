@@ -63,6 +63,37 @@
     30% { opacity: 0; } /* Fade out */
     100% { opacity: 0; }
 }
+
+:root {
+    /* Warm, professional engineering palette */
+    --bg-color: #fdfaf5; 
+    --grid-color: rgba(181, 150, 112, 0.1); /* Subtle warm lines */
+    --blue: #2c5282;
+    --dark: #2d3748;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    background-color: var(--bg-color);
+    /* This creates the "Graph Paper" pattern */
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 30px 30px; /* Size of the grid squares */
+    line-height: 1.6;
+}
+
+/* Let's make the cards slightly transparent (Glassmorphism) 
+   so the pattern peeks through just a tiny bit */
+header, .resume-container, .item {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
         
     </style>
 </head>
@@ -93,4 +124,5 @@
         </div>
         <div style="text-align: center;">
             <a href="resume.pdf" download class="btn">📥 Download PDF
+
 
