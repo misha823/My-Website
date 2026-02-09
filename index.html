@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineer Portfolio</title>
+    <title>Michael Dumesh | Engineering Field Log</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
     <style>
-        /* 1. THE BACKGROUND (Attached directly to the body) */
+        /* 1. LIGHTER, YELLOW-TONED BACKGROUND */
         body { 
             margin: 0; 
             padding: 0; 
             font-family: 'Inter', sans-serif;
-            background-color: #e6d5b8; /* Base paper color */
+            background-color: #fcf6e5; /* Lighter, Happier Yellow-Parchment */
             
-            /* The Coffee Stained Graph Paper */
+            /* The Coffee Stained Graph Paper (Lightened) */
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(139, 69, 19, 0.15) 0%, transparent 35%),
-                radial-gradient(circle at 80% 85%, rgba(160, 82, 45, 0.12) 0%, transparent 30%),
-                linear-gradient(rgba(139, 69, 19, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 69, 19, 0.1) 1px, transparent 1px);
+                radial-gradient(circle at 15% 15%, rgba(139, 69, 19, 0.1) 0%, transparent 35%),
+                radial-gradient(circle at 80% 85%, rgba(160, 82, 45, 0.08) 0%, transparent 30%),
+                linear-gradient(rgba(181, 150, 112, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(181, 150, 112, 0.08) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
             background-attachment: fixed;
             color: #1a1a1a;
         }
 
-        /* 2. THE CALCULATIONS (Behind everything) */
+        /* 2. BACKGROUND SCRIBBLES */
         .calc-background {
             position: fixed;
             top: 20%;
             left: 5%;
             font-family: 'Special Elite', cursive;
             font-size: 4rem;
-            color: rgba(139, 69, 19, 0.05);
+            color: rgba(139, 69, 19, 0.04); /* Very subtle yellow-brown */
             transform: rotate(-10deg);
             z-index: -1;
             pointer-events: none;
-            user-select: none;
         }
 
         /* 3. CONTENT WRAPPER */
@@ -44,17 +43,16 @@
             max-width: 850px;
             margin: 0 auto;
             padding: 40px 20px;
-            z-index: 1; /* Ensures content is definitely on top */
+            z-index: 1;
         }
 
-        /* White "Paper" Sections for readability */
         section {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94); /* Very clean white contrast */
             padding: 30px;
             margin-bottom: 30px;
             border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-left: 10px solid #c4a484;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 10px solid #d4c4a8;
         }
 
         header { text-align: center; margin-bottom: 40px; }
@@ -65,7 +63,7 @@
         }
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            border: 6px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 6px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             object-fit: cover; opacity: 0; animation: fade 20s infinite;
         }
         .slide:nth-child(1) { animation-delay: 0s; transform: rotate(-3deg); }
@@ -79,73 +77,34 @@
 
         /* GALLERY GRID */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .item { background: white; border: 1px solid #ddd; padding: 10px; }
+        .item { background: white; border: 1px solid #eee; padding: 10px; }
         .item img, .item video { width: 100%; height: 200px; object-fit: cover; }
 
         /* MODAL */
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
-        .modal-box { background: white; margin: 50px auto; width: 90%; max-width: 800px; padding: 20px; }
-        .res-img { width: 100%; margin-top: 20px; border: 1px solid #ccc; }
-        .btn { display: inline-block; background: #1e40af; color: white; padding: 12px 24px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
+        .modal-box { background: white; margin: 50px auto; width: 95%; max-width: 800px; padding: 20px; border-radius: 4px; }
+        .res-img { width: 100%; margin-top: 20px; border: 1px solid #ddd; }
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; }
     </style>
 </head>
 <body>
 
     <div class="calc-background">
-        F = m·a <br> ΔV = I·R <br> ∫ x² dx
+        F = m·a <br> ΔV = I·R <br> ∫ x² dx <br> η = W/Q
     </div>
 
     <div class="wrapper">
         <header>
             <div class="slideshow">
-                <img src="hat1.jpg" class="slide" alt="H1">
-                <img src="hat2.jpg" class="slide" alt="H2">
-                <img src="hat3.jpg" class="slide" alt="H3">
-                <img src="hat4.jpg" class="slide" alt="H4">
+                <img src="hat1.jpg" class="slide" alt="Michael Hat 1">
+                <img src="hat2.jpg" class="slide" alt="Michael Hat 2">
+                <img src="hat3.jpg" class="slide" alt="Michael Hat 3">
+                <img src="hat4.jpg" class="slide" alt="Michael Hat 4">
             </div>
-            <h1 style="font-family: 'Special Elite', cursive;">Field Log: [Your Name]</h1>
+            <h1 style="font-family: 'Special Elite', cursive; font-size: 2.5rem; margin-bottom: 0;">Michael Dumesh</h1>
+            <p style="margin-top: 5px; color: #555; letter-spacing: 1px;">MECHANICAL ENGINEER | TECHNICAL LOG</p>
         </header>
 
         <section>
-            <h2 style="font-family: 'Special Elite', cursive; color: #1e40af;">01. Introduction</h2>
-            <p>Welcome to my technical portfolio. Here you will find my engineering projects and professional documentation.</p>
-        </section>
-
-        <section style="text-align: center;">
-            <h2 style="font-family: 'Special Elite', cursive; color: #1e40af;">02. Resume</h2>
-            <p>Click below to open the technical dossier.</p>
-            <div class="btn" onclick="openRes()">Open 2-Page Resume</div>
-        </section>
-
-        <section>
-            <h2 style="font-family: 'Special Elite', cursive; color: #1e40af;">03. Projects</h2>
-            <div class="grid">
-                <div class="item">
-                    <img src="project-photo.jpg" alt="Photo">
-                    <p><b>Structural Analysis</b></p>
-                </div>
-                <div class="item">
-                    <video controls><source src="project-video.mp4"></video>
-                    <p><b>Kinetic Prototype</b></p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div id="resModal" class="modal">
-        <div class="modal-box">
-            <span style="float:right; cursor:pointer; font-size:24px;" onclick="closeRes()">&times; Close</span>
-            <h3>Resume Reader</h3>
-            <a href="#p1">Page 1</a> | <a href="#p2">Page 2</a> | <a href="resume.pdf" download>Download PDF</a>
-            <img id="p1" src="resume-page1.png" class="res-img">
-            <img id="p2" src="resume-page2.png" class="res-img">
-        </div>
-    </div>
-
-    <script>
-        function openRes() { document.getElementById('resModal').style.display = 'block'; }
-        function closeRes() { document.getElementById('resModal').style.display = 'none'; }
-    </script>
-
-</body>
-</html>
+            <h2 style="font-family: 'Special Elite', cursive; color: #2563eb;">01. Technical Background</h2>
+            <p>Welcome to my professional dossier. I specialize in engineering
