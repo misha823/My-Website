@@ -117,4 +117,88 @@
         .close { font-size: 2.5rem; cursor: pointer; color: #333; }
 
         /* 5. PROJECT GALLERY */
-        .grid { display: grid; grid
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .card img, .card video { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 1.5rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hat-slideshow">
+        <img src="hat1.jpg" class="slide" alt="H1">
+        <img src="hat2.jpg" class="slide" alt="H2">
+        <img src="hat3.jpg" class="slide" alt="H3">
+        <img src="hat4.jpg" class="slide" alt="H4">
+    </div>
+    <h1 style="font-family: 'Special Elite', cursive; margin-bottom: 5px;">[Your Name]</h1>
+    <p style="margin-top: 0; color: var(--gray);">Engineering Field Log & Portfolio</p>
+</header>
+
+<div class="container">
+    
+    <section>
+        <h2>01. Executive Summary</h2>
+        <p>I am a [Your Field] Engineer specializing in [Your Specialty]. This portfolio documents my technical capabilities, design projects, and professional history.</p>
+    </section>
+
+    <section style="text-align: center;">
+        <h2>02. Professional History</h2>
+        <p>Access the two-page comprehensive resume.</p>
+        <a href="javascript:void(0)" class="resume-link" onclick="openResume()">> Launch Resume Viewer_</a>
+    </section>
+
+    <section>
+        <h2>03. Technical Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="project-photo.jpg" alt="Project">
+                <div class="card-body">
+                    <h3 style="margin-top:0;">System Design</h3>
+                    <p>Optimized structural components for efficiency and durability.</p>
+                </div>
+            </div>
+            <div class="card">
+                <video controls>
+                    <source src="project-video.mp4" type="video/mp4">
+                </video>
+                <div class="card-body">
+                    <h3 style="margin-top:0;">Mechanical Demo</h3>
+                    <p>Testing the kinetic motion of the prototype assembly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div id="resume-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <nav class="resume-nav">
+                <a href="#pg1">PAGE 1</a>
+                <a href="#pg2">PAGE 2</a>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <a href="resume.pdf" download class="btn" style="font-size: 0.8rem;">PDF DOWNLOAD</a>
+                <span class="close" onclick="closeResume()">&times;</span>
+            </div>
+        </div>
+        <div id="pg1">
+            <img src="resume-page1.png" class="resume-img" alt="Resume Page 1">
+        </div>
+        <div id="pg2" style="margin-top: 40px;">
+            <img src="resume-page2.png" class="resume-img" alt="Resume Page 2">
+        </div>
+    </div>
+</div>
+
+<script>
+    function openResume() { document.getElementById("resume-modal").style.display = "block"; document.body.style.overflow = "hidden"; }
+    function closeResume() { document.getElementById("resume-modal").style.display = "none"; document.body.style.overflow = "auto"; }
+    window.onclick = function(e) { if (e.target == document.getElementById("resume-modal")) closeResume(); }
+</script>
+
+</body>
+</html>
