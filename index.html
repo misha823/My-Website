@@ -6,14 +6,10 @@
     <title>Michael Dumesh | Engineering Field Log</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
     <style>
-        /* 1. LIGHTER, YELLOW-TONED BACKGROUND */
+        /* 1. BACKGROUND & CORE STYLES */
         body { 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Inter', sans-serif;
-            background-color: #fcf6e5; /* Lighter Yellow-Parchment */
-            
-            /* The Coffee Stained Graph Paper (Lightened) */
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif;
+            background-color: #fcf6e5; 
             background-image: 
                 radial-gradient(circle at 15% 15%, rgba(139, 69, 19, 0.1) 0%, transparent 35%),
                 radial-gradient(circle at 80% 85%, rgba(160, 82, 45, 0.08) 0%, transparent 30%),
@@ -25,44 +21,41 @@
             overflow-x: hidden;
         }
 
-        /* 2. BACKGROUND SCRIBBLES */
-        .calc-background {
-            position: fixed;
-            top: 20%;
-            left: 5%;
-            font-family: 'Special Elite', cursive;
-            font-size: 4rem;
-            color: rgba(139, 69, 19, 0.04); 
-            transform: rotate(-10deg);
-            z-index: -1;
-            pointer-events: none;
-            white-space: nowrap;
+        /* 2. THE FLAGS (Fixed Positioning) */
+        .flag-left {
+            position: fixed; top: 20px; left: 20px; z-index: 100;
+        }
+        .flag-right {
+            position: fixed; top: 20px; right: 20px; z-index: 100;
+            display: flex; gap: 15px;
+        }
+        .flag-img {
+            width: 45px; height: auto; 
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            border-radius: 2px;
         }
 
-        /* 3. CONTENT WRAPPER */
-        .wrapper {
-            position: relative;
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            z-index: 1;
+        /* 3. BACKGROUND SCRIBBLES */
+        .calc-background {
+            position: fixed; top: 25%; left: 5%;
+            font-family: 'Special Elite', cursive; font-size: 4rem;
+            color: rgba(139, 69, 19, 0.04); transform: rotate(-10deg);
+            z-index: -1; pointer-events: none; white-space: nowrap;
         }
+
+        /* 4. CONTENT WRAPPER */
+        .wrapper { position: relative; max-width: 850px; margin: 0 auto; padding: 60px 20px; z-index: 1; }
 
         section {
-            background: rgba(255, 255, 255, 0.94); 
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.94); padding: 35px; margin-bottom: 30px;
+            border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             border-left: 10px solid #d4c4a8;
         }
 
         header { text-align: center; margin-bottom: 40px; }
 
         /* SLIDESHOW (Polaroid Style) */
-        .slideshow {
-            position: relative; width: 160px; height: 160px; margin: 0 auto 20px;
-        }
+        .slideshow { position: relative; width: 160px; height: 160px; margin: 0 auto 20px; }
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             border: 6px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -77,20 +70,26 @@
             0% { opacity: 0; } 5% { opacity: 1; } 25% { opacity: 1; } 30% { opacity: 0; } 100% { opacity: 0; }
         }
 
-        /* GALLERY GRID */
+        /* MODAL & BUTTONS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .item { background: white; border: 1px solid #eee; padding: 10px; text-align: center; }
         .item img, .item video { width: 100%; height: 200px; object-fit: cover; }
-
-        /* MODAL */
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; }
+        .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
         .modal-box { background: white; margin: 50px auto; width: 95%; max-width: 800px; padding: 20px; border-radius: 4px; position: relative; }
         .res-img { width: 100%; margin-top: 20px; border: 1px solid #ddd; }
-        .btn { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; }
-        .close-btn { float: right; cursor: pointer; font-size: 28px; font-weight: bold; color: #333; }
+        .close-btn { float: right; cursor: pointer; font-size: 28px; font-weight: bold; }
     </style>
 </head>
 <body>
+
+    <div class="flag-left">
+        <img src="https://flagcdn.com/us.svg" class="flag-img" alt="USA">
+    </div>
+    <div class="flag-right">
+        <img src="https://flagcdn.com/ua.svg" class="flag-img" alt="Ukraine">
+        <img src="https://flagcdn.com/il.svg" class="flag-img" alt="Israel">
+    </div>
 
     <div class="calc-background">
         F = m·a &nbsp;&nbsp; ΔV = I·R &nbsp;&nbsp; ∫ x² dx &nbsp;&nbsp; η = W/Q
@@ -99,31 +98,30 @@
     <div class="wrapper">
         <header>
             <div class="slideshow">
-                <img src="hat1.jpg" class="slide" alt="Michael 1">
-                <img src="hat2.jpg" class="slide" alt="Michael 2">
-                <img src="hat3.jpg" class="slide" alt="Michael 3">
-                <img src="hat4.jpg" class="slide" alt="Michael 4">
+                <img src="hat1.jpg" class="slide" alt="M1">
+                <img src="hat2.jpg" class="slide" alt="M2">
+                <img src="hat3.jpg" class="slide" alt="M3">
+                <img src="hat4.jpg" class="slide" alt="M4">
             </div>
-            <h1 style="font-family: 'Special Elite', cursive; font-size: 2.5rem; margin-bottom: 0;">Michael Dumesh</h1>
-            <p style="margin-top: 5px; color: #555; letter-spacing: 1px;">MECHANICAL ENGINEER | TECHNICAL LOG</p>
+            <h1 style="font-family: 'Special Elite', cursive; font-size: 2.8rem; margin-bottom: 0;">Michael Dumesh</h1>
+            <p style="margin-top: 5px; color: #555; letter-spacing: 1px; font-weight: bold;">MECHANICAL ENGINEER | TECHNICAL LOG</p>
         </header>
 
         <section>
             <h2 style="font-family: 'Special Elite', cursive; color: #2563eb;">01. Technical Background</h2>
-            <p>Welcome to my professional dossier. I specialize in engineering solutions that bridge the gap between complex theory and practical application. Below you will find my resume and key project demonstrations.</p>
+            <p>I am Michael Dumesh, an engineer dedicated to solving complex mechanical challenges through rigorous analysis and innovative design. This log documents my professional capabilities and active projects.</p>
         </section>
 
         <section style="text-align: center;">
             <h2 style="font-family: 'Special Elite', cursive; color: #2563eb;">02. Resume Dossier</h2>
-            <p>High-resolution technical resume available for review.</p>
-            <button class="btn" onclick="openRes()">Launch 2-Page Reader</button>
+            <button class="btn" onclick="openRes()">Open 2-Page Reader</button>
         </section>
 
         <section>
             <h2 style="font-family: 'Special Elite', cursive; color: #2563eb;">03. Project Evidence</h2>
             <div class="grid">
                 <div class="item">
-                    <img src="project-photo.jpg" alt="Mechanical Design">
+                    <img src="project-photo.jpg" alt="Design">
                     <p><b>Structural Modeling</b></p>
                 </div>
                 <div class="item">
@@ -134,8 +132,8 @@
         </section>
 
         <footer>
-            <p style="text-align: center; color: #888; font-size: 0.8rem; margin-top: 50px;">
-                © 2026 Michael Dumesh • Engineering Logbook 
+            <p style="text-align: center; color: #888; font-size: 0.9rem; margin-top: 50px; font-family: 'Special Elite', cursive;">
+                LOGBOOK REF: MD-2026-PORTFOLIO
             </p>
         </footer>
     </div>
@@ -147,27 +145,17 @@
             <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
                 <a href="#p1" style="color: #2563eb; font-weight: bold; text-decoration: none; margin-right: 20px;">PAGE 1</a>
                 <a href="#p2" style="color: #2563eb; font-weight: bold; text-decoration: none; margin-right: 20px;">PAGE 2</a>
-                <a href="resume.pdf" download style="color: #555; text-decoration: none; font-size: 0.9rem;">DOWNLOAD PDF</a>
+                <a href="resume.pdf" download style="color: #555; text-decoration: none;">DOWNLOAD PDF</a>
             </div>
-            <img id="p1" src="resume-page1.png" class="res-img" alt="Resume Page 1">
-            <img id="p2" src="resume-page2.png" class="res-img" alt="Resume Page 2" style="margin-top: 30px;">
+            <img id="p1" src="resume-page1.png" class="res-img">
+            <img id="p2" src="resume-page2.png" class="res-img" style="margin-top: 30px;">
         </div>
     </div>
 
     <script>
-        function openRes() { 
-            document.getElementById('resModal').style.display = 'block'; 
-            document.body.style.overflow = 'hidden'; 
-        }
-        function closeRes() { 
-            document.getElementById('resModal').style.display = 'none'; 
-            document.body.style.overflow = 'auto'; 
-        }
-        // Close modal when clicking background
-        window.onclick = function(event) {
-            let modal = document.getElementById('resModal');
-            if (event.target == modal) { closeRes(); }
-        }
+        function openRes() { document.getElementById('resModal').style.display = 'block'; document.body.style.overflow = 'hidden'; }
+        function closeRes() { document.getElementById('resModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        window.onclick = function(e) { if (e.target == document.getElementById('resModal')) closeRes(); }
     </script>
 
 </body>
