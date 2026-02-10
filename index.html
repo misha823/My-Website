@@ -21,13 +21,13 @@
             overflow-x: hidden;
         }
 
-        /* 2. THE FLAGS */
+        /* 2. THE FLAGS (Interactive) */
         .flag-left { position: fixed; top: 20px; left: 20px; z-index: 100; }
         .flag-right { position: fixed; top: 20px; right: 20px; z-index: 100; display: flex; gap: 15px; align-items: flex-start; }
         .flag-img { cursor: pointer; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.16)); border-radius: 2px; transition: transform 0.2s ease; }
         .flag-img:hover { transform: scale(1.1); }
-        .us-flag { width: 80px; height: auto; }
-        .int-flag { width: 50px; height: auto; }
+        .us-flag { width: 85px; height: auto; }
+        .int-flag { width: 55px; height: auto; }
 
         /* 3. CONTENT WRAPPER */
         .wrapper { position: relative; max-width: 850px; margin: 0 auto; padding: 80px 20px 40px; z-index: 1; }
@@ -41,7 +41,7 @@
         header { text-align: center; margin-bottom: 40px; }
 
         /* SLIDESHOW (Polaroid Style) */
-        .slideshow { position: relative; width: 160px; height: 160px; margin: 0 auto 20px; }
+        .slideshow { position: relative; width: 170px; height: 170px; margin: 0 auto 20px; }
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             border: 6px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -58,15 +58,18 @@
 
         /* GRID & CARDS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .item { background: white; border: 1px solid #eee; padding: 10px; text-align: center; }
+        .item { background: white; border: 1px solid #eee; padding: 10px; text-align: center; border-radius: 4px; }
         .item img, .item video { width: 100%; height: 220px; object-fit: cover; border-radius: 2px; }
 
         /* PET SECTION SPECIAL STYLING */
-        .pet-card { border: 1px dashed #c4a484; padding: 15px; background: #fff; }
-        .pet-card img { border-radius: 50%; width: 150px !important; height: 150px !important; margin: 0 auto 10px; border: 3px solid #fcf6e5; }
+        .pet-card { border: 2px dashed #d4c4a8; padding: 25px; transition: background 0.3s; }
+        .pet-card:hover { background: #fffcf0; }
+        .pet-photo { border-radius: 50%; width: 140px !important; height: 140px !important; margin: 0 auto 15px; border: 4px solid #fcf6e5; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
 
-        .btn { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; }
+        .btn { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; font-size: 1rem; transition: background 0.2s; }
+        .btn:hover { background: #1d4ed8; }
         
+        /* MODAL */
         .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
         .modal-box { background: white; margin: 50px auto; width: 95%; max-width: 800px; padding: 20px; border-radius: 4px; position: relative; }
         .res-img { width: 100%; margin-top: 20px; border: 1px solid #ddd; }
@@ -86,13 +89,13 @@
     <div class="wrapper">
         <header>
             <div class="slideshow">
-                <img src="hat1.jpg" class="slide" alt="M1">
-                <img src="hat2.jpg" class="slide" alt="M2">
-                <img src="hat3.jpg" class="slide" alt="M3">
-                <img src="hat4.jpg" class="slide" alt="M4">
+                <img src="hat1.jpg" class="slide" alt="Michael 1">
+                <img src="hat2.jpg" class="slide" alt="Michael 2">
+                <img src="hat3.jpg" class="slide" alt="Michael 3">
+                <img src="hat4.jpg" class="slide" alt="Michael 4">
             </div>
-            <h1 style="font-family: 'Special Elite', cursive; font-size: 2.8rem; margin-bottom: 0;">Michael Dumesh</h1>
-            <p style="margin-top: 5px; color: #555; letter-spacing: 1px; font-weight: bold;">MECHANICAL ENGINEER | TECHNICAL LOG</p>
+            <h1 style="font-family: 'Special Elite', cursive; font-size: 3rem; margin: 0;">Michael Dumesh</h1>
+            <p style="margin-top: 5px; color: #555; letter-spacing: 1px; font-weight: bold; font-family: 'Inter', sans-serif;">MECHANICAL ENGINEER | TECHNICAL LOG</p>
         </header>
 
         <section>
@@ -105,7 +108,7 @@
             <button class="btn" onclick="openRes()">Open 2-Page Reader</button>
         </section>
 
-        <section>
+        <section id="projects">
             <h2 style="font-family: 'Special Elite', cursive; color: #2563eb;">03. Project Evidence</h2>
             <div class="grid">
                 <div class="item">
@@ -120,17 +123,20 @@
         </section>
 
         <section id="pets">
-            <h2 style="font-family: 'Special Elite', cursive; color: #2563eb;">04. Co-Engineers (My Pets)</h2>
+            <h2 style="font-family: 'Special Elite', cursive; color: #2563eb;">04. Technical Support (My Pets)</h2>
+            <p style="margin-bottom: 25px;">Meet the team that keeps the home office running smoothly.</p>
             <div class="grid">
                 <div class="item pet-card">
-                    <img src="pet1.png" alt="Pet 1">
-                    <h3 style="margin: 5px 0;">Pet Name 1</h3>
-                    <p style="font-size: 0.9rem; color: #666;">Chief Morale Officer</p>
+                    <img src="pet1.png" class="pet-photo" alt="Schumi">
+                    <h3 style="margin: 5px 0; font-family: 'Special Elite', cursive;">Leo</h3>
+                    <p style="font-size: 0.9rem; color: #666; font-weight: bold;">CHIEF MORALE OFFICER</p>
+                    <p style="font-size: 0.8rem; font-style: italic;">Specializes in nap-time coordination.</p>
                 </div>
                 <div class="item pet-card">
-                    <img src="pet2.png" alt="Pet 2">
-                    <h3 style="margin: 5px 0;">Pet Name 2</h3>
-                    <p style="font-size: 0.9rem; color: #666;">Head of Security</p>
+                    <img src="pet2.png" class="pet-photo" alt="Mila">
+                    <h3 style="margin: 5px 0; font-family: 'Special Elite', cursive;">Bella</h3>
+                    <p style="font-size: 0.9rem; color: #666; font-weight: bold;">HEAD OF SECURITY</p>
+                    <p style="font-size: 0.8rem; font-style: italic;">Expert in perimeter barking and toy retrieval.</p>
                 </div>
             </div>
         </section>
@@ -151,8 +157,8 @@
                 <a href="#p2" style="color: #2563eb; font-weight: bold; text-decoration: none; margin-right: 20px;">PAGE 2</a>
                 <a href="resume.pdf" download style="color: #555; text-decoration: none;">DOWNLOAD PDF</a>
             </div>
-            <img id="p1" src="resume-page1.png" class="res-img">
-            <img id="p2" src="resume-page2.png" class="res-img" style="margin-top: 30px;">
+            <img id="p1" src="resume-page1.png" class="res-img" alt="Resume Page 1">
+            <img id="p2" src="resume-page2.png" class="res-img" alt="Resume Page 2" style="margin-top: 30px;">
         </div>
     </div>
 
@@ -164,4 +170,3 @@
 
 </body>
 </html>
-
