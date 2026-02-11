@@ -30,7 +30,7 @@
         }
 
         /* 3. COMIC BALLOON STYLING */
-        .bubble-container { position: relative; display: inline-block; }
+        .bubble-container { position: relative; display: inline-block; width: 100%; }
 
         .speech-bubble {
             visibility: hidden;
@@ -39,7 +39,7 @@
             color: #333;
             text-align: center;
             padding: 12px;
-            border-radius: 25px; /* Smooth Oval */
+            border-radius: 25px;
             border: 2px solid #0056b3;
             position: absolute;
             z-index: 105;
@@ -48,7 +48,7 @@
             margin-left: -80px;
             opacity: 0;
             transition: opacity 0.3s, transform 0.3s;
-            font-size: 0.75rem; /* Smaller font */
+            font-size: 0.75rem;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
             line-height: 1.3;
@@ -109,6 +109,18 @@
         .item { background: white; border: 1px solid #e1e8f0; padding: 15px; text-align: center; border-radius: 5px; }
         .item img, .item video { width: 100%; height: 220px; object-fit: cover; border-radius: 3px; }
 
+        /* CREDIT LINK STYLING */
+        .credit-link { 
+            display: block; 
+            margin-top: 8px; 
+            font-size: 0.7rem; 
+            color: #0056b3; 
+            text-decoration: none; 
+            font-family: 'Inter', sans-serif;
+            opacity: 0.7;
+        }
+        .credit-link:hover { opacity: 1; text-decoration: underline; }
+
         /* PETS */
         .pet-card { border: 2px dashed #0056b3; padding: 35px; }
         .pet-photo { border-radius: 50%; width: 250px !important; height: 250px !important; margin: 0 auto 20px; border: 8px solid #f0f7ff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
@@ -151,16 +163,6 @@
             <p style="font-weight: bold; letter-spacing: 2px;">MECHANICAL ENGINEER | TECHNICAL LOG</p>
         </header>
 
-        <section id="bio">
-            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">01. Technical Background</h2>
-            <p>I am Michael Dumesh, an engineer focused on precision and mechanical integrity. This log tracks my active engineering projects and technical milestones.</p>
-        </section>
-
-        <section id="resume" style="text-align: center;">
-            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">02. Resume Dossier</h2>
-            <button class="btn" onclick="openRes()">Open 2-Page Reader</button>
-        </section>
-
         <section id="projects">
             <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">03. Project Evidence</h2>
             <div class="grid">
@@ -168,31 +170,21 @@
                     <span class="speech-bubble">3D CAD Model showing structural load points.</span>
                     <img src="project-photo.jpg" alt="P1">
                     <p><b>Structural Modeling</b></p>
+                    <a href="https://yourlinkhere.com" class="credit-link" target="_blank">View Project Source →</a>
                 </div>
+                
                 <div class="item bubble-container">
                     <span class="speech-bubble">Full assembly of the prototype unit.</span>
                     <img src="project-photo2.jpg" alt="P2">
                     <p><b>Assembly View</b></p>
+                    <a href="https://yourlinkhere.com" class="credit-link" target="_blank">Technical Documentation →</a>
                 </div>
-                <div class="item bubble-container">
-                    <span class="speech-bubble">This is USNS Howard O. Lorenzen, and the Cobra King radar suite. I designed the structure for the upper radar. https://www.dote.osd.mil/Portals/97/pub/reports/FY2013/navy/2013cjr.pdf?ver=2019-08-22-111214-097</span>
-                    <img src="project-photo3.jpg" alt="P3">
-                    <p><b>Internal Schematics</b></p>
-                </div>
-                <div class="item bubble-container">
-                    <span class="speech-bubble">Thermal stress testing under max load.</span>
-                    <img src="project-photo4.jpg" alt="P4">
-                    <p><b>Analysis Data</b></p>
-                </div>
-                <div class="item bubble-container">
-                    <span class="speech-bubble">On-site deployment and field calibration.</span>
-                    <img src="project-photo5.jpg" alt="P5">
-                    <p><b>Field Testing</b></p>
-                </div>
+                
                 <div class="item bubble-container">
                     <span class="speech-bubble">Video demo of the mechanical motion.</span>
                     <video controls><source src="project-video.mp4" type="video/mp4"></video>
                     <p><b>Motion Prototype</b></p>
+                    <a href="https://github.com" class="credit-link" target="_blank">View Repository →</a>
                 </div>
             </div>
         </section>
@@ -205,30 +197,12 @@
                     <img src="pet1.png" class="pet-photo" alt="Schumi">
                     <h3 style="font-family: 'Special Elite', cursive; font-size: 1.8rem;">Schumi</h3>
                     <p>CHIEF MORALE OFFICER</p>
-                </div>
+                    </div>
                 <div class="item pet-card bubble-container">
                     <span class="speech-bubble">Mila: Specializes in perimeter security.</span>
                     <img src="pet2.png" class="pet-photo" alt="Mila">
                     <h3 style="font-family: 'Special Elite', cursive; font-size: 1.8rem;">Mila</h3>
                     <p>HEAD OF SECURITY</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="hobbies">
-            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">05. Engineering Hobbies</h2>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-                <div class="item bubble-container">
-                    <span class="speech-bubble">Precision 3D printing for custom tools.</span>
-                    <img src="hobby1.jpg" alt="H1"><p>3D Printing</p>
-                </div>
-                <div class="item bubble-container">
-                    <span class="speech-bubble">Restoring vintage mechanical gear.</span>
-                    <img src="hobby2.jpg" alt="H2"><p>Restoration</p>
-                </div>
-                <div class="item bubble-container">
-                    <span class="speech-bubble">Capturing industrial architecture.</span>
-                    <img src="hobby3.jpg" alt="H3"><p>Photography</p>
                 </div>
             </div>
         </section>
@@ -255,5 +229,3 @@
     </script>
 </body>
 </html>
-
-
