@@ -9,9 +9,7 @@
         /* 1. BLUE-TONE GRAPH PAPER BACKGROUND */
         body { 
             margin: 0; padding: 0; font-family: 'Inter', sans-serif;
-            background-color: #f0f7ff; /* Light Blueprint Blue */
-            
-            /* The Blue Engineering Grid */
+            background-color: #f0f7ff; 
             background-image: 
                 linear-gradient(rgba(0, 102, 204, 0.07) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 102, 204, 0.07) 1px, transparent 1px);
@@ -25,7 +23,7 @@
         .calc-background {
             position: fixed; top: 15%; left: 5%;
             font-family: 'Special Elite', cursive; font-size: 3.5rem;
-            color: rgba(0, 51, 153, 0.04); /* Faded Blue Ink */
+            color: rgba(0, 51, 153, 0.04);
             transform: rotate(-8deg);
             z-index: -1; pointer-events: none; white-space: pre-line;
             line-height: 1.5;
@@ -40,12 +38,12 @@
         .int-flag { width: 55px; height: auto; }
 
         /* 4. CONTENT WRAPPER */
-        .wrapper { position: relative; max-width: 900px; margin: 0 auto; padding: 100px 20px 40px; z-index: 1; }
+        .wrapper { position: relative; max-width: 950px; margin: 0 auto; padding: 100px 20px 40px; z-index: 1; }
 
         section {
             background: rgba(255, 255, 255, 0.96); padding: 35px; margin-bottom: 30px;
             border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 10px solid #0056b3; /* Blue Engineering Accent */
+            border-left: 10px solid #0056b3;
         }
 
         header { text-align: center; margin-bottom: 40px; }
@@ -67,9 +65,9 @@
         }
 
         /* GRID & CARDS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .item { background: white; border: 1px solid #e1e8f0; padding: 15px; text-align: center; border-radius: 4px; }
-        .item img, .item video { width: 100%; height: 250px; object-fit: cover; border-radius: 2px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .item { background: white; border: 1px solid #e1e8f0; padding: 10px; text-align: center; border-radius: 4px; }
+        .item img, .item video { width: 100%; height: 200px; object-fit: cover; border-radius: 2px; }
 
         /* PET SECTION */
         .pet-card { border: 2px dashed #0056b3; padding: 30px; }
@@ -78,9 +76,14 @@
             width: 250px !important; 
             height: 250px !important; 
             margin: 0 auto 20px; 
-            border: 6px solid #f0f7ff; 
+            border: 6px solid #fcf6e5; 
             box-shadow: 0 6px 12px rgba(0,0,0,0.05); 
         }
+
+        /* HOBBY LIST */
+        .hobby-list { list-style: none; padding: 0; font-family: 'Special Elite', cursive; font-size: 1.1rem; }
+        .hobby-list li { padding: 10px 0; border-bottom: 1px dashed #ccc; }
+        .hobby-list li::before { content: "➢ "; color: #0056b3; }
 
         .btn { display: inline-block; background: #0056b3; color: white; padding: 12px 24px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; font-size: 1rem; }
         
@@ -111,36 +114,34 @@
     <div class="wrapper">
         <header>
             <div class="slideshow">
-                <img src="hat1.jpg" class="slide" alt="Michael 1">
-                <img src="hat2.jpg" class="slide" alt="Michael 2">
-                <img src="hat3.jpg" class="slide" alt="Michael 3">
-                <img src="hat4.jpg" class="slide" alt="Michael 4">
+                <img src="hat1.jpg" class="slide" alt="M1">
+                <img src="hat2.jpg" class="slide" alt="M2">
+                <img src="hat3.jpg" class="slide" alt="M3">
+                <img src="hat4.jpg" class="slide" alt="M4">
             </div>
             <h1 style="font-family: 'Special Elite', cursive; font-size: 3.2rem; margin: 0; color: #003366;">Michael Dumesh</h1>
             <p style="margin-top: 5px; color: #555; letter-spacing: 1px; font-weight: bold;">MECHANICAL ENGINEER | TECHNICAL LOG</p>
         </header>
 
-        <section>
+        <section id="bio">
             <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">01. Technical Background</h2>
             <p>I am Michael Dumesh, an engineer dedicated to solving complex mechanical challenges. This log documents my professional capabilities and active projects.</p>
         </section>
 
-        <section style="text-align: center;">
+        <section id="resume" style="text-align: center;">
             <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">02. Resume Dossier</h2>
             <button class="btn" onclick="openRes()">Open 2-Page Reader</button>
         </section>
 
         <section id="projects">
-            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">03. Project Evidence</h2>
+            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">03. Project Evidence (5-Photo Gallery)</h2>
             <div class="grid">
-                <div class="item">
-                    <img src="project-photo.jpg" alt="Design">
-                    <p><b>Structural Modeling</b></p>
-                </div>
-                <div class="item">
-                    <video controls><source src="project-video.mp4" type="video/mp4"></video>
-                    <p><b>Motion Prototype</b></p>
-                </div>
+                <div class="item"><img src="project-photo.jpg" alt="P1"><p><b>Main Design</b></p></div>
+                <div class="item"><img src="project-photo2.jpg" alt="P2"><p><b>Assembly View</b></p></div>
+                <div class="item"><img src="project-photo3.jpg" alt="P3"><p><b>Component Detail</b></p></div>
+                <div class="item"><img src="project-photo4.jpg" alt="P4"><p><b>Thermal Analysis</b></p></div>
+                <div class="item"><img src="project-photo5.jpg" alt="P5"><p><b>Field Testing</b></p></div>
+                <div class="item"><video controls><source src="project-video.mp4" type="video/mp4"></video><p><b>Motion Prototype</b></p></div>
             </div>
         </section>
 
@@ -148,7 +149,7 @@
             <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">04. Technical Support (My Pets)</h2>
             <div class="grid">
                 <div class="item pet-card">
-                    <img src="pet1.png" class="pet-photo" alt="Shumi">
+                    <img src="pet1.png" class="pet-photo" alt="Schumi">
                     <h3 style="margin: 5px 0; font-family: 'Special Elite', cursive; font-size: 1.8rem;">Schumi</h3>
                     <p style="font-size: 1rem; color: #666; font-weight: bold;">CHIEF MORALE OFFICER</p>
                 </div>
@@ -158,6 +159,16 @@
                     <p style="font-size: 1rem; color: #666; font-weight: bold;">HEAD OF SECURITY</p>
                 </div>
             </div>
+        </section>
+
+        <section id="hobbies">
+            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">05. My Hobbies</h2>
+            <ul class="hobby-list">
+                <li>Mechanical Restoration & Classic Tool Collecting</li>
+                <li>Advanced CAD Modeling & 3D Printing</li>
+                <li>Strategic Chess & Logic Puzzles</li>
+                <li>Outdoor Exploration & Field Photography</li>
+            </ul>
         </section>
 
         <footer>
