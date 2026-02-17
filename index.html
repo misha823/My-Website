@@ -109,11 +109,7 @@
         .item { background: white; border: 1px solid #e1e8f0; padding: 15px; text-align: center; border-radius: 5px; }
         .item img, .item video { width: 100%; height: 220px; object-fit: cover; border-radius: 3px; }
 
-        /* CREDIT LINK STYLING */
-        .credit-link { 
-            display: block; margin-top: 10px; font-size: 0.75rem; color: #0056b3; 
-            text-decoration: none; font-weight: bold;
-        }
+        .credit-link { display: block; margin-top: 10px; font-size: 0.75rem; color: #0056b3; text-decoration: none; font-weight: bold; }
         .credit-link:hover { text-decoration: underline; }
 
         /* PETS */
@@ -138,22 +134,11 @@
     </div>
 
     <div class="flag-left">
-        <img src="https://flagcdn.com/us.svg" 
-             class="flag-img us-flag" 
-             alt="USA" 
-             onclick="playAnthem('https://upload.wikimedia.org/wikipedia/commons/5/5e/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga')">
+        <img src="https://flagcdn.com/us.svg" class="flag-img us-flag" alt="USA" onclick="playAnthem('https://upload.wikimedia.org/wikipedia/commons/5/5e/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga')">
     </div>
-    
     <div class="flag-right">
-        <img src="https://flagcdn.com/ua.svg" 
-             class="flag-img int-flag" 
-             alt="Ukraine" 
-             onclick="playAnthem('https://www.youtube.com/embed/xDeQVaoTvJM?autoplay=1')">
-             
-        <img src="https://flagcdn.com/il.svg" 
-             class="flag-img int-flag" 
-             alt="Israel" 
-             onclick="playAnthem('https://www.youtube.com/embed/GQCu9kl68Tg?autoplay=1')">
+        <img src="https://flagcdn.com/ua.svg" class="flag-img int-flag" alt="Ukraine" onclick="playAnthem('https://www.youtube.com/embed/xDeQVaoTvJM?autoplay=1')">
+        <img src="https://flagcdn.com/il.svg" class="flag-img int-flag" alt="Israel" onclick="playAnthem('https://www.youtube.com/embed/GQCu9kl68Tg?autoplay=1')">
     </div>
 
     <div class="wrapper">
@@ -171,36 +156,84 @@
 
         <section id="bio">
             <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">01. Technical Background</h2>
-            <p>I am Michael Dumesh, an engineer dedicated to precision and mechanical integrity. This log tracks my active engineering projects and technical milestones.</p>
+            <p>I am Michael Dumesh, an engineer dedicated to precision and mechanical integrity. This log tracks my active projects.</p>
         </section>
 
-        </div>
+        <section id="resume" style="text-align: center;">
+            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">02. Resume Dossier</h2>
+            <button class="btn" onclick="openRes()">Open 2-Page Reader</button>
+        </section>
+
+        <section id="projects">
+            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">03. Project Evidence</h2>
+            <div class="grid">
+                <div class="item">
+                    <div class="bubble-container"><span class="speech-bubble">3D CAD Model structural load.</span><img src="project-photo.jpg" alt="P1"></div>
+                    <p><b>Structural Modeling</b></p>
+                    <a href="#" class="credit-link" target="_blank">View Project →</a>
+                </div>
+                <div class="item">
+                    <div class="bubble-container"><span class="speech-bubble">Full prototype assembly.</span><img src="project-photo2.jpg" alt="P2"></div>
+                    <p><b>Assembly View</b></p>
+                    <a href="#" class="credit-link" target="_blank">Full Specs →</a>
+                </div>
+                <div class="item">
+                    <div class="bubble-container"><span class="speech-bubble">Internal wiring layout.</span><img src="project-photo3.jpg" alt="P3"></div>
+                    <p><b>Internal Schematics</b></p>
+                    <a href="#" class="credit-link" target="_blank">Parts List →</a>
+                </div>
+                <div class="item">
+                    <div class="bubble-container"><span class="speech-bubble">Thermal stress testing.</span><img src="project-photo4.jpg" alt="P4"></div>
+                    <p><b>Analysis Data</b></p>
+                    <a href="#" class="credit-link" target="_blank">Results →</a>
+                </div>
+                <div class="item">
+                    <div class="bubble-container"><span class="speech-bubble">Field calibration.</span><img src="project-photo5.jpg" alt="P5"></div>
+                    <p><b>Field Testing</b></p>
+                    <a href="#" class="credit-link" target="_blank">Field Log →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="pets">
+            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">04. Technical Support (My Pets)</h2>
+            <div class="grid">
+                <div class="item pet-card">
+                    <div class="bubble-container"><span class="speech-bubble">Schumi: Toy durability lead.</span><img src="pet1.png" class="pet-photo" alt="Schumi"></div>
+                    <h3 style="font-family: 'Special Elite', cursive; font-size: 1.8rem;">Schumi</h3>
+                    <p>CHIEF MORALE OFFICER</p>
+                </div>
+                <div class="item pet-card">
+                    <div class="bubble-container"><span class="speech-bubble">Mila: Security specialist.</span><img src="pet2.png" class="pet-photo" alt="Mila"></div>
+                    <h3 style="font-family: 'Special Elite', cursive; font-size: 1.8rem;">Mila</h3>
+                    <p>HEAD OF SECURITY</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobbies">
+            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">05. Engineering Hobbies</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+                <div class="item"><img src="hobby1.jpg" alt="H1"><p>3D Printing</p></div>
+                <div class="item"><img src="hobby2.jpg" alt="H2"><p>Restoration</p></div>
+            </div>
+        </section>
+
+        <footer>
+            <p style="text-align: center; color: #888; font-family: 'Special Elite', cursive; margin-top: 50px;">LOGBOOK REF: MD-2026-PORTFOLIO</p>
+        </footer>
+    </div>
 
     <div id="resModal" class="modal">
-        <div class="modal-box">
-            <span class="close-btn" onclick="closeRes()">&times;</span>
-            <h3 style="font-family: 'Special Elite', cursive;">Michael Dumesh - Professional Resume</h3>
-            <img id="p1" src="resume-page1.png" class="res-img">
-            <img id="p2" src="resume-page2.png" class="res-img" style="margin-top: 30px;">
-        </div>
+        <div class="modal-box"><span class="close-btn" onclick="closeRes()">&times;</span><img src="resume-page1.png" class="res-img"><img src="resume-page2.png" class="res-img"></div>
     </div>
 
     <script>
-        // FUNCTION TO OPEN ANTHEM IN A SMALL WINDOW
         function playAnthem(url) {
-            const width = 560;
-            const height = 315;
-            const left = (window.innerWidth / 2) - (width / 2);
-            const top = (window.innerHeight / 2) - (height / 2);
-            
-            window.open(url, 'AnthemPlayer', 
-                `width=${width},height=${height},left=${left},top=${top},menubar=no,status=no,toolbar=no`
-            );
+            window.open(url, 'AnthemPlayer', 'width=560,height=315,left=100,top=100,menubar=no,toolbar=no');
         }
-
         function openRes() { document.getElementById('resModal').style.display = 'block'; document.body.style.overflow = 'hidden'; }
         function closeRes() { document.getElementById('resModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        window.onclick = function(e) { if (e.target == document.getElementById('resModal')) closeRes(); }
     </script>
 </body>
 </html>
