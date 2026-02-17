@@ -107,7 +107,10 @@
         /* GRIDS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .item { background: white; border: 1px solid #e1e8f0; padding: 15px; text-align: center; border-radius: 5px; }
-        .item img, .item video { width: 100%; height: 220px; object-fit: cover; border-radius: 3px; }
+        
+        /* HOVER TRIGGER: Added zoom cursor and class for hover effects */
+        .item img { width: 100%; height: 220px; object-fit: cover; border-radius: 3px; cursor: zoom-in; transition: opacity 0.3s; }
+        .item img:hover { opacity: 0.8; }
 
         .credit-link { display: block; margin-top: 10px; font-size: 0.75rem; color: #0056b3; text-decoration: none; font-weight: bold; }
         .credit-link:hover { text-decoration: underline; }
@@ -118,6 +121,28 @@
 
         .btn { background: #0056b3; color: white; padding: 14px 28px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; font-size: 1rem; }
         
+        /* HOVER PREVIEW WINDOW */
+        #hoverPreview {
+            display: none;
+            position: fixed;
+            z-index: 500;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 10px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            pointer-events: none; /* Allows mouse to move over it without flickering */
+        }
+        #hoverPreview img {
+            max-width: 80vw;
+            max-height: 80vh;
+            display: block;
+            border: 2px solid #0056b3;
+        }
+
+        /* MODALS */
         .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,10,30,0.92); overflow-y: auto; }
         .modal-box { background: white; margin: 40px auto; width: 90%; max-width: 850px; padding: 30px; border-radius: 4px; position: relative; }
         .res-img { width: 100%; margin-top: 20px; border: 1px solid #ddd; }
@@ -134,21 +159,23 @@
     </div>
 
     <div class="flag-left">
-        <img src="https://flagcdn.com/us.svg" class="flag-img us-flag" alt="USA" onclick="playAnthem('https://www.youtube.com/watch?v=_n9bxfxE25Y')">
+        <img src="https://flagcdn.com/us.svg" class="flag-img us-flag" alt="USA" onclick="playAnthem('https://www.youtube.com/embed/_n9bxfxE25Y?autoplay=1')">
     </div>
     <div class="flag-right">
         <img src="https://flagcdn.com/ua.svg" class="flag-img int-flag" alt="Ukraine" onclick="playAnthem('https://www.youtube.com/embed/xDeQVaoTvJM?autoplay=1')">
         <img src="https://flagcdn.com/il.svg" class="flag-img int-flag" alt="Israel" onclick="playAnthem('https://www.youtube.com/embed/GQCu9kl68Tg?autoplay=1')">
     </div>
 
+    <div id="hoverPreview"><img src="" id="previewImg" alt="Preview"></div>
+
     <div class="wrapper">
         <header>
             <div class="slideshow bubble-container">
                 <span class="speech-bubble">Working in the field - safety first!</span>
-                <img src="hat1.jpg" class="slide" alt="M1">
-                <img src="hat2.jpg" class="slide" alt="M2">
-                <img src="hat3.jpg" class="slide" alt="M3">
-                <img src="hat4.jpg" class="slide" alt="M4">
+                <img src="hat1.jpg" class="slide preview-trigger" alt="M1">
+                <img src="hat2.jpg" class="slide preview-trigger" alt="M2">
+                <img src="hat3.jpg" class="slide preview-trigger" alt="M3">
+                <img src="hat4.jpg" class="slide preview-trigger" alt="M4">
             </div>
             <h1 style="font-family: 'Special Elite', cursive; font-size: 3.5rem; margin: 0; color: #003366;">Michael Dumesh</h1>
             <p style="font-weight: bold; letter-spacing: 2px;">MECHANICAL ENGINEER | TECHNICAL LOG</p>
@@ -168,27 +195,32 @@
             <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">03. Career Highlights</h2>
             <div class="grid">
                 <div class="item">
-                    <div class="bubble-container"><span class="speech-bubble">3D CAD Model structural load.</span><img src="project-photo.jpg" alt="P1"></div>
+                    <div class="bubble-container"><span class="speech-bubble">3D CAD Model structural load.</span>
+                    <img src="project-photo.jpg" class="preview-trigger" alt="P1"></div>
                     <p><b>Structural Modeling</b></p>
                     <a href="#" class="credit-link" target="_blank">View Project →</a>
                 </div>
                 <div class="item">
-                    <div class="bubble-container"><span class="speech-bubble">Full prototype assembly.</span><img src="project-photo2.jpg" alt="P2"></div>
+                    <div class="bubble-container"><span class="speech-bubble">Full prototype assembly.</span>
+                    <img src="project-photo2.jpg" class="preview-trigger" alt="P2"></div>
                     <p><b>Assembly View</b></p>
                     <a href="#" class="credit-link" target="_blank">Full Specs →</a>
                 </div>
                 <div class="item">
-                    <div class="bubble-container"><span class="speech-bubble">Internal wiring layout.</span><img src="project-photo3.jpg" alt="P3"></div>
+                    <div class="bubble-container"><span class="speech-bubble">Internal wiring layout.</span>
+                    <img src="project-photo3.jpg" class="preview-trigger" alt="P3"></div>
                     <p><b>Internal Schematics</b></p>
                     <a href="#" class="credit-link" target="_blank">Parts List →</a>
                 </div>
                 <div class="item">
-                    <div class="bubble-container"><span class="speech-bubble">Thermal stress testing.</span><img src="project-photo4.jpg" alt="P4"></div>
+                    <div class="bubble-container"><span class="speech-bubble">Thermal stress testing.</span>
+                    <img src="project-photo4.jpg" class="preview-trigger" alt="P4"></div>
                     <p><b>Analysis Data</b></p>
                     <a href="#" class="credit-link" target="_blank">Results →</a>
                 </div>
                 <div class="item">
-                    <div class="bubble-container"><span class="speech-bubble">Field calibration.</span><img src="project-photo5.jpg" alt="P5"></div>
+                    <div class="bubble-container"><span class="speech-bubble">Field calibration.</span>
+                    <img src="project-photo5.jpg" class="preview-trigger" alt="P5"></div>
                     <p><b>Field Testing</b></p>
                     <a href="#" class="credit-link" target="_blank">Field Log →</a>
                 </div>
@@ -199,12 +231,14 @@
             <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">04. Technical Support Staff (My Pets)</h2>
             <div class="grid">
                 <div class="item pet-card">
-                    <div class="bubble-container"><span class="speech-bubble">Schumi: Toy durability lead.</span><img src="pet1.png" class="pet-photo" alt="Schumi"></div>
+                    <div class="bubble-container"><span class="speech-bubble">Schumi: Toy durability lead.</span>
+                    <img src="pet1.png" class="pet-photo preview-trigger" alt="Schumi"></div>
                     <h3 style="font-family: 'Special Elite', cursive; font-size: 1.8rem;">Schumi</h3>
                     <p>CHIEF MORALE OFFICER</p>
                 </div>
                 <div class="item pet-card">
-                    <div class="bubble-container"><span class="speech-bubble">Mila: Security specialist.</span><img src="pet2.png" class="pet-photo" alt="Mila"></div>
+                    <div class="bubble-container"><span class="speech-bubble">Mila: Security specialist.</span>
+                    <img src="pet2.png" class="pet-photo preview-trigger" alt="Mila"></div>
                     <h3 style="font-family: 'Special Elite', cursive; font-size: 1.8rem;">Mila</h3>
                     <p>HEAD OF SECURITY</p>
                 </div>
@@ -214,9 +248,9 @@
         <section id="hobbies">
             <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">05. My Hobbies</h2>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-                <div class="item"><img src="hobby1.jpg" alt="H1"><p>My Bike</p></div>
-                <div class="item"><img src="hobby2.jpg" alt="H2"><p>My Garden</p></div>
-                 <div class="item"><img src="hobby3.jpg" alt="H3"><p>My Welding</p></div>
+                <div class="item"><img src="hobby1.jpg" class="preview-trigger" alt="H1"><p>My Bike</p></div>
+                <div class="item"><img src="hobby2.jpg" class="preview-trigger" alt="H2"><p>My Garden</p></div>
+                <div class="item"><img src="hobby3.jpg" class="preview-trigger" alt="H3"><p>My Welding</p></div>
             </div>
         </section>
 
@@ -226,18 +260,37 @@
     </div>
 
     <div id="resModal" class="modal">
-        <div class="modal-box"><span class="close-btn" onclick="closeRes()">&times;</span><img src="resume-page1.png" class="res-img"><img src="resume-page2.png" class="res-img"></div>
+        <div class="modal-box"><span class="close-btn" onclick="closeRes()">&times;</span><img src="resume-page1.png" class="res-img" alt="Resume Page 1"><img src="resume-page2.png" class="res-img" style="margin-top: 20px;" alt="Resume Page 2"></div>
     </div>
 
     <script>
+        // HOVER PREVIEW LOGIC
+        const preview = document.getElementById('hoverPreview');
+        const previewImg = document.getElementById('previewImg');
+        const triggers = document.querySelectorAll('.preview-trigger');
+
+        triggers.forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                previewImg.src = img.src;
+                preview.style.display = 'block';
+            });
+            img.addEventListener('mouseleave', () => {
+                preview.style.display = 'none';
+            });
+        });
+
+        // ANTHEM PLAYER
         function playAnthem(url) {
-            window.open(url, 'AnthemPlayer', 'width=560,height=315,left=100,top=100,menubar=no,toolbar=no');
+            const width = 560; const height = 315;
+            const left = (window.innerWidth / 2) - (width / 2);
+            const top = (window.innerHeight / 2) - (height / 2);
+            window.open(url, 'AnthemPlayer', `width=${width},height=${height},left=${left},top=${top},menubar=no,toolbar=no`);
         }
+
+        // RESUME MODAL
         function openRes() { document.getElementById('resModal').style.display = 'block'; document.body.style.overflow = 'hidden'; }
         function closeRes() { document.getElementById('resModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        window.onclick = function(e) { if (e.target == document.getElementById('resModal')) closeRes(); }
     </script>
 </body>
 </html>
-
-
-
