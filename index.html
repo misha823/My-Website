@@ -138,13 +138,22 @@
     </div>
 
     <div class="flag-left">
-        <a href="https://upload.wikimedia.org/wikipedia/commons/5/5e/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga" target="_blank">
-            <img src="https://flagcdn.com/us.svg" class="flag-img us-flag" alt="USA">
-        </a>
+        <img src="https://flagcdn.com/us.svg" 
+             class="flag-img us-flag" 
+             alt="USA" 
+             onclick="playAnthem('https://upload.wikimedia.org/wikipedia/commons/5/5e/%22The_Star-Spangled_Banner%22_-_Choral_with_band_accompaniment_-_United_States_Army_Field_Band.oga')">
     </div>
+    
     <div class="flag-right">
-        <img src="https://flagcdn.com/ua.svg" class="flag-img int-flag" alt="Ukraine" onclick="alert('I support Ukraine in its brave fight against Russian aggression')">
-        <img src="https://flagcdn.com/il.svg" class="flag-img int-flag" alt="Israel" onclick="alert('I stand with the people of Israel')">
+        <img src="https://flagcdn.com/ua.svg" 
+             class="flag-img int-flag" 
+             alt="Ukraine" 
+             onclick="playAnthem('https://www.youtube.com/embed/xDeQVaoTvJM?autoplay=1')">
+             
+        <img src="https://flagcdn.com/il.svg" 
+             class="flag-img int-flag" 
+             alt="Israel" 
+             onclick="playAnthem('https://www.youtube.com/embed/GQCu9kl68Tg?autoplay=1')">
     </div>
 
     <div class="wrapper">
@@ -165,120 +174,7 @@
             <p>I am Michael Dumesh, an engineer dedicated to precision and mechanical integrity. This log tracks my active engineering projects and technical milestones.</p>
         </section>
 
-        <section id="resume" style="text-align: center;">
-            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">02. Resume Dossier</h2>
-            <button class="btn" onclick="openRes()">Open 2-Page Reader</button>
-        </section>
-
-        <section id="projects">
-            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">03. Project Evidence</h2>
-            <div class="grid">
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">3D CAD Model showing structural load points.</span>
-                        <img src="project-photo.jpg" alt="P1">
-                    </div>
-                    <p><b>Structural Modeling</b></p>
-                    <a href="https://INSERT-LINK-HERE.com" class="credit-link" target="_blank">View Project Source →</a>
-                </div>
-                
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Full assembly of the prototype unit.</span>
-                        <img src="project-photo2.jpg" alt="P2">
-                    </div>
-                    <p><b>Assembly View</b></p>
-                    <a href="https://INSERT-LINK-HERE.com" class="credit-link" target="_blank">Full Specs →</a>
-                </div>
-
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Internal components and wiring layout.</span>
-                        <img src="project-photo3.jpg" alt="P3">
-                    </div>
-                    <p><b>Internal Schematics</b></p>
-                    <a href="https://www.dote.osd.mil/Portals/97/pub/reports/FY2013/navy/2013cjr.pdf?ver=2019-08-22-111214-097.com" class="credit-link" target="_blank">Parts List →</a>
-                </div>
-
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Thermal stress testing under max load.</span>
-                        <img src="project-photo4.jpg" alt="P4">
-                    </div>
-                    <p><b>Analysis Data</b></p>
-                    <a href="https://www.dote.osd.mil/Portals/97/pub/reports/FY2013/navy/2013cjr.pdf?ver=2019-08-22-111214-097.com" class="credit-link" target="_blank">Testing Results →</a>
-                </div>
-
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">On-site deployment and field calibration.</span>
-                        <img src="project-photo5.jpg" alt="P5">
-                    </div>
-                    <p><b>Field Testing</b></p>
-                    <a href="https://INSERT-LINK-HERE.com" class="credit-link" target="_blank">Field Log →</a>
-                </div>
-
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Video demo of the mechanical motion.</span>
-                        <video controls><source src="project-video.mp4" type="video/mp4"></video>
-                    </div>
-                    <p><b>Motion Prototype</b></p>
-                    <a href="https://INSERT-LINK-HERE.com" class="credit-link" target="_blank">Video Link →</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="pets">
-            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">04. Technical Support (My Pets)</h2>
-            <div class="grid">
-                <div class="item pet-card">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Schumi: Lead engineer in toy durability.</span>
-                        <img src="pet1.png" class="pet-photo" alt="Schumi">
-                    </div>
-                    <h3 style="font-family: 'Special Elite', cursive; font-size: 1.8rem;">Schumi</h3>
-                    <p>CHIEF MORALE OFFICER</p>
-                </div>
-                <div class="item pet-card">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Mila: Specializes in perimeter security.</span>
-                        <img src="pet2.png" class="pet-photo" alt="Mila">
-                    </div>
-                    <h3 style="font-family: 'Special Elite', cursive; font-size: 1.8rem;">Mila</h3>
-                    <p>HEAD OF SECURITY</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="hobbies">
-            <h2 style="font-family: 'Special Elite', cursive; color: #0056b3;">05. Engineering Hobbies</h2>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Precision 3D printing.</span>
-                        <img src="hobby1.jpg" alt="H1">
-                    </div>
-                    <p>3D Printing</p>
-                    <a href="https://INSERT-LINK-HERE.com" class="credit-link" target="_blank">Models →</a>
-                </div>
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Restoring vintage gear.</span>
-                        <img src="hobby2.jpg" alt="H2">
-                    </div>
-                    <p>Restoration</p>
-                    <a href="https://INSERT-LINK-HERE.com" class="credit-link" target="_blank">Before/After →</a>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p style="text-align: center; color: #888; font-family: 'Special Elite', cursive; margin-top: 50px;">
-                LOGBOOK REF: MD-2026-PORTFOLIO
-            </p>
-        </footer>
-    </div>
+        </div>
 
     <div id="resModal" class="modal">
         <div class="modal-box">
@@ -290,10 +186,21 @@
     </div>
 
     <script>
+        // FUNCTION TO OPEN ANTHEM IN A SMALL WINDOW
+        function playAnthem(url) {
+            const width = 560;
+            const height = 315;
+            const left = (window.innerWidth / 2) - (width / 2);
+            const top = (window.innerHeight / 2) - (height / 2);
+            
+            window.open(url, 'AnthemPlayer', 
+                `width=${width},height=${height},left=${left},top=${top},menubar=no,status=no,toolbar=no`
+            );
+        }
+
         function openRes() { document.getElementById('resModal').style.display = 'block'; document.body.style.overflow = 'hidden'; }
         function closeRes() { document.getElementById('resModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
         window.onclick = function(e) { if (e.target == document.getElementById('resModal')) closeRes(); }
     </script>
 </body>
 </html>
-
