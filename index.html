@@ -6,7 +6,7 @@
     <title>Michael Dumesh | Engineering Field Log</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
     <style>
-        /* 1. BLUE BLUEPRINT BACKGROUND */
+        /* 1. THE BLUEPRINT CANVAS */
         body { 
             margin: 0; padding: 0; font-family: 'Inter', sans-serif;
             background-color: #f0f7ff; 
@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* 2. FLOATING CALCULATIONS */
+        /* 2. BACKGROUND MATH DECOR */
         .calc-background {
             position: fixed; top: 15%; left: 5%;
             font-family: 'Special Elite', cursive; font-size: 3.5rem;
@@ -29,52 +29,26 @@
             line-height: 1.8;
         }
 
-        /* 3. COMIC BALLOON STYLING */
+        /* 3. COMIC BALLOONS */
         .bubble-container { position: relative; display: block; width: 100%; }
 
         .speech-bubble {
-            visibility: hidden;
-            width: 160px;
-            background-color: #fff;
-            color: #333;
-            text-align: center;
-            padding: 12px;
-            border-radius: 25px;
-            border: 2px solid #0056b3;
-            position: absolute;
-            z-index: 105;
-            bottom: 115%; 
-            left: 50%;
-            margin-left: -80px;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            font-size: 0.75rem; 
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            line-height: 1.3;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            pointer-events: none;
-            transform: translateY(10px);
+            visibility: hidden; width: 160px; background-color: #fff; color: #333;
+            text-align: center; padding: 12px; border-radius: 25px; border: 2px solid #0056b3;
+            position: absolute; z-index: 105; bottom: 115%; left: 50%; margin-left: -80px;
+            opacity: 0; transition: opacity 0.3s, transform 0.3s; font-size: 0.75rem; 
+            font-family: 'Inter', sans-serif; font-weight: 500; line-height: 1.3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); pointer-events: none; transform: translateY(10px);
         }
 
         .speech-bubble::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -10px;
-            border-width: 10px;
-            border-style: solid;
-            border-color: #0056b3 transparent transparent transparent;
+            content: ""; position: absolute; top: 100%; left: 50%; margin-left: -10px;
+            border-width: 10px; border-style: solid; border-color: #0056b3 transparent transparent transparent;
         }
 
-        .bubble-container:hover .speech-bubble { 
-            visibility: visible; 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
+        .bubble-container:hover .speech-bubble { visibility: visible; opacity: 1; transform: translateY(0); }
 
-        /* 4. FLAGS */
+        /* 4. NAVIGATION FLAGS */
         .flag-left { position: fixed; top: 20px; left: 20px; z-index: 100; }
         .flag-right { position: fixed; top: 20px; right: 20px; z-index: 100; display: flex; gap: 15px; }
         .flag-img { cursor: pointer; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.16)); transition: transform 0.2s; }
@@ -82,7 +56,7 @@
         .us-flag { width: 100px; height: auto; }
         .int-flag { width: 55px; height: auto; }
 
-        /* 5. MAIN LAYOUT */
+        /* 5. MAIN WRAPPER & SECTIONS */
         .wrapper { position: relative; max-width: 1000px; margin: 0 auto; padding: 100px 20px 40px; z-index: 1; }
         section {
             background: rgba(255, 255, 255, 0.97); padding: 40px; margin-bottom: 40px;
@@ -90,18 +64,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
+        /* 6. SLIDESHOW (50% LARGER, NO CROP) */
         header { text-align: center; margin-bottom: 50px; }
-
-        /* SLIDESHOW UPDATED: 50% LARGER (200px -> 300px) */
         .slideshow { position: relative; width: 300px; height: 300px; margin: 0 auto 20px; }
-        
-        /* SLIDE UPDATED: object-fit: contain ensures NO cropping */
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             border: 6px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            object-fit: contain; /* Shows full image */
-            background-color: white; /* Fills gaps if image ratio isn't 1:1 */
-            opacity: 0; animation: fade 20s infinite;
+            object-fit: contain; background-color: white; opacity: 0; animation: fade 20s infinite;
         }
         .slide:nth-child(1) { animation-delay: 0s; transform: rotate(-3deg); }
         .slide:nth-child(2) { animation-delay: 5s; transform: rotate(2deg); }
@@ -110,44 +79,33 @@
 
         @keyframes fade { 0% { opacity: 0; } 5% { opacity: 1; } 25% { opacity: 1; } 30% { opacity: 0; } 100% { opacity: 0; } }
 
-        /* GRIDS */
+        /* 7. GRID SYSTEMS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .item { background: white; border: 1px solid #e1e8f0; padding: 15px; text-align: center; border-radius: 5px; }
         
-        .item img { width: 100%; height: 220px; object-fit: cover; border-radius: 3px; cursor: zoom-in; transition: opacity 0.3s; }
-        .item img:hover { opacity: 0.8; }
+        /* Interactive Images */
+        .preview-trigger { cursor: zoom-in; transition: opacity 0.3s; }
+        .preview-trigger:hover { opacity: 0.85; }
+        .item img { width: 100%; height: 220px; object-fit: cover; border-radius: 3px; }
 
-        .credit-link { display: block; margin-top: 10px; font-size: 0.75rem; color: #0056b3; text-decoration: none; font-weight: bold; }
+        /* Links to new windows */
+        .credit-link { display: block; margin-top: 10px; font-size: 0.75rem; color: #0056b3; text-decoration: none; font-weight: bold; cursor: pointer; }
         .credit-link:hover { text-decoration: underline; }
 
-        /* PETS */
+        /* 8. PETS & HOBBIES */
         .pet-card { border: 2px dashed #0056b3; padding: 35px; }
-        .pet-photo { border-radius: 50%; width: 250px !important; height: 250px !important; margin: 0 auto 20px; border: 8px solid #f0f7ff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .pet-photo { border-radius: 50%; width: 250px !important; height: 250px !important; margin: 0 auto 20px; border: 8px solid #f0f7ff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: cover !important; }
 
-        .btn { background: #0056b3; color: white; padding: 14px 28px; text-decoration: none; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; font-size: 1rem; }
+        .btn { background: #0056b3; color: white; padding: 14px 28px; cursor: pointer; font-weight: bold; border-radius: 4px; border: none; font-size: 1rem; }
         
-        /* HOVER PREVIEW WINDOW */
+        /* 9. POPUP WINDOWS (Hover & Modal) */
         #hoverPreview {
-            display: none;
-            position: fixed;
-            z-index: 500;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 10px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            border-radius: 8px;
-            pointer-events: none;
+            display: none; position: fixed; z-index: 500; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); background: white; padding: 10px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); border-radius: 8px; pointer-events: none;
         }
-        #hoverPreview img {
-            max-width: 85vw;
-            max-height: 85vh;
-            display: block;
-            border: 2px solid #0056b3;
-        }
+        #hoverPreview img { max-width: 85vw; max-height: 85vh; display: block; border: 2px solid #0056b3; }
 
-        /* MODALS */
         .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,10,30,0.92); overflow-y: auto; }
         .modal-box { background: white; margin: 40px auto; width: 90%; max-width: 850px; padding: 30px; border-radius: 4px; position: relative; }
         .res-img { width: 100%; margin-top: 20px; border: 1px solid #ddd; }
@@ -202,10 +160,10 @@
                 <div class="item">
                     <div class="bubble-container">
                         <span class="speech-bubble">3D CAD Model structural load.</span>
-                        <img src="project-photo1.jpg" class="preview-trigger" alt="P1">
+                        <img src="project-photo.jpg" class="preview-trigger" alt="P1">
                     </div>
                     <p><b>Structural Modeling</b></p>
-                    <a href="#" class="credit-link" target="_blank">View Project →</a>
+                    <span class="credit-link" onclick="openProjectWindow('https://www.wikipedia.org')">View Project →</span>
                 </div>
                 <div class="item">
                     <div class="bubble-container">
@@ -213,7 +171,7 @@
                         <img src="project-photo2.jpg" class="preview-trigger" alt="P2">
                     </div>
                     <p><b>Assembly View</b></p>
-                    <a href="#" class="credit-link" target="_blank">Full Specs →</a>
+                    <span class="credit-link" onclick="openProjectWindow('https://www.google.com')">Full Specs →</span>
                 </div>
                 <div class="item">
                     <div class="bubble-container">
@@ -221,23 +179,7 @@
                         <img src="project-photo3.jpg" class="preview-trigger" alt="P3">
                     </div>
                     <p><b>Internal Schematics</b></p>
-                    <a href="#" class="credit-link" target="_blank">More Information →</a>
-                </div>
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Thermal stress testing.</span>
-                        <img src="project-photo4.jpg" class="preview-trigger" alt="P4">
-                    </div>
-                    <p><b>Analysis Data</b></p>
-                    <a href="#" class="credit-link" target="_blank">Results →</a>
-                </div>
-                <div class="item">
-                    <div class="bubble-container">
-                        <span class="speech-bubble">Field calibration.</span>
-                        <img src="project-photo5.jpg" class="preview-trigger" alt="P5">
-                    </div>
-                    <p><b>Field Testing</b></p>
-                    <a href="#" class="credit-link" target="_blank">Field Log →</a>
+                    <span class="credit-link" onclick="openProjectWindow('https://www.nasa.gov')">Parts List →</span>
                 </div>
             </div>
         </section>
@@ -287,36 +229,33 @@
     </div>
 
     <script>
-        // HOVER PREVIEW LOGIC
+        // 1. HOVER PREVIEW LOGIC
         const preview = document.getElementById('hoverPreview');
         const previewImg = document.getElementById('previewImg');
         const triggers = document.querySelectorAll('.preview-trigger');
 
         triggers.forEach(img => {
-            img.addEventListener('mouseenter', () => {
-                previewImg.src = img.src;
-                preview.style.display = 'block';
-            });
-            img.addEventListener('mouseleave', () => {
-                preview.style.display = 'none';
-            });
+            img.addEventListener('mouseenter', () => { previewImg.src = img.src; preview.style.display = 'block'; });
+            img.addEventListener('mouseleave', () => { preview.style.display = 'none'; });
         });
 
-        // ANTHEM PLAYER
+        // 2. FLAG ANTHEM WINDOWS
         function playAnthem(url) {
-            const width = 560; const height = 315;
-            const left = (window.innerWidth / 2) - (width / 2);
-            const top = (window.innerHeight / 2) - (height / 2);
-            window.open(url, 'AnthemPlayer', `width=${width},height=${height},left=${left},top=${top},menubar=no,toolbar=no`);
+            window.open(url, 'AnthemPlayer', 'width=560,height=315,left=100,top=100,menubar=no,toolbar=no');
         }
 
-        // RESUME MODAL
+        // 3. PROJECT DETAIL WINDOWS
+        function openProjectWindow(url) {
+            const width = 1024; const height = 768;
+            const left = (window.innerWidth / 2) - (width / 2);
+            const top = (window.innerHeight / 2) - (height / 2);
+            window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,menubar=no`);
+        }
+
+        // 4. RESUME MODAL
         function openRes() { document.getElementById('resModal').style.display = 'block'; document.body.style.overflow = 'hidden'; }
         function closeRes() { document.getElementById('resModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
         window.onclick = function(e) { if (e.target == document.getElementById('resModal')) closeRes(); }
     </script>
 </body>
 </html>
-
-
-
